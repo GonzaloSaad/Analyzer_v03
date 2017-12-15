@@ -1,7 +1,7 @@
 import math
 
 '''
-Este modulo contiene todas las funciones que se utilizaran en el parser y que son reconocidad por 
+Este modulo contiene todas las funciones que se utilizaran en el function_parser y que son reconocidad por 
 el analizador lexico. 
 La idea principal es que la signatura de las funciones coincidan con el lexeme que permite reconocerlas, 
 por ende hay que tener siempre actualizada la relacion entre este archivo y FunctionLexer.
@@ -29,11 +29,9 @@ def log2(x):
 def ln(x):
     return math.log(x,math.e)
 
-def pi():
-    return math.pi
+pi = math.pi
 
-def e():
-    return math.e
+e = math.e
 
 
 
