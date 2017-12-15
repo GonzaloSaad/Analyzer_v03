@@ -103,7 +103,8 @@ class FunctionLexer():
 
     def __setMultipleLexemes(self):
         lexemes = [
-            Lexeme('NUMBER', r'[0-9]+(?!.)')
+            Lexeme('NUMBER', r'[0-9]+(?!.)'),
+            Lexeme('NUMBER',r'\.[0-9]*(?!.)')
         ]  # Se crean los lexemas.
         self.__lexer.addLexemes(lexemes)  # Se los agrega.
 
