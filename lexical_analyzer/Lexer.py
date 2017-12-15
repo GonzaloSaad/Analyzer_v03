@@ -1,7 +1,7 @@
 import re
-from lexical_analyzer.lexer_exceptions import NoSuchSymbolException
+from lexical_analyzer.lexer_exceptions.NoSuchSymbolException import NoSuchSymbolException
 from lexical_analyzer.tokens import Token
-from lexical_analyzer.string_iterator import StringIterator
+from lexical_analyzer.StringIterator import StringIterator
 
 
 class Lexer():
@@ -44,7 +44,7 @@ class Lexer():
             if token is None:  # Si el token no se encontro, se lanza una excepcion no reconociendo el simbolo.
                 raise NoSuchSymbolException("The symbol '" + c + "' is not legal.")
 
-                # yield token --Aqui se devuelve el token, en la version original.
+            # yield token --Aqui se devuelve el token, en la version original.
 
     def __scan(self, lexemes, size, chars):
         '''
@@ -113,9 +113,14 @@ class Lexer():
                 for i in range(lexemeSize - lexerSize + 1):
                     self.__lexemes.append([])
 
-            self.__lexemes[lexemeSize].append(lex)  # Se agrega en la lista de lexemas del largo correcto. 
+            self.__lexemes[lexemeSize].append(lex)  # Se agrega en la lista de lexemas del largo correcto.
 
     def __str__(self):
+        '''
+        Crea un string representativo del objeto de la clase.
+        :return: string del objeto.
+        '''
+
         string = "Lexer.\t\t\nInput String: '" + self.__inputString + "'\n"
         for i in range(len(self.__lexemes)):
             string += "Lenght " + str("*" if i == 0 else i) + " lexemes\n"
