@@ -1,5 +1,6 @@
-from lexical_analyzer import FunctionLexer as lex
-from parser_exceptions import *
+from lexical_analyzer.FunctionLexer import *
+from lexical_analyzer.lexer_exceptions.NoSuchSymbolException import *
+
 
 
 class FunctionParser():
@@ -9,7 +10,7 @@ class FunctionParser():
     en base a un string.
     '''
 
-    def __init__(self, inputString, twoVar = False):
+    def __init__(self, inputString, twoVar=False):
         '''
         Constructor.
         Define el atributo 'inputString' para almacenar la funcion entrante.
@@ -18,7 +19,6 @@ class FunctionParser():
         self.__inputString = inputString
         self.__twoVariables = twoVar
         self.__f = self.__convertToFunction(inputString)
-
 
     def __convertToFunction(self, inputString):
         '''
@@ -33,14 +33,13 @@ class FunctionParser():
         # Se valida que sea una expresion matematica.
         try:
             if self.__twoVariables:
-                l = lex.FunctionLexer(inputString,'x','y')
+                l = FunctionLexer(inputString, 'x', 'y')
             else:
-                l = lex.FunctionLexer(inputString)
+                l = FunctionLexer(inputString)
 
             l.tokenize()
-        except Exception:
+        except NoSuchSymbolException:
             raise InvalidInputException("Lo ingresado no es una funcion matematica.")
-
 
         # Se realiza la ccnversion.
         # Se utiliza eval(), quien es que tirara la excepcion si no esta bien escrita.
@@ -48,7 +47,7 @@ class FunctionParser():
         try:
 
             if self.__twoVariables:
-                return lambda x,y: eval(inputString)
+                return lambda x, y: eval(inputString)
             else:
                 return lambda x: eval(inputString)
         except Exception:
@@ -56,6 +55,3 @@ class FunctionParser():
 
     def getFunction(self):
         return self.__f
-
-
-

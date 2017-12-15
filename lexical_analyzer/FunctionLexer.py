@@ -84,7 +84,8 @@ class FunctionLexer():
 
         lexemes = [
             Lexeme("FUNCTION", r'ln'),
-            Lexeme("FUNCTION", r'tg')
+            Lexeme("FUNCTION", r'tg'),
+            Lexeme("CONSTANT", r'pi')
         ]  # Se crean los lexemas.
         self.__lexer.addLexemes(lexemes)  # Se agregan los lexemas.
 

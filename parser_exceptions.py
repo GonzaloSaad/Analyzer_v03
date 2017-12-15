@@ -1,4 +1,0 @@
-
-
-class InvalidInputException(Exception):
-    pass

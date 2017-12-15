@@ -1,3 +1,5 @@
+
+
 class StringIterator():
     '''
     Clase para iterar un string.

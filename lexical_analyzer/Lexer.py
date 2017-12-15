@@ -1,6 +1,6 @@
 import re
 from lexical_analyzer.lexer_exceptions.NoSuchSymbolException import NoSuchSymbolException
-from lexical_analyzer.tokens import Token
+from lexical_analyzer.Token import Token
 from lexical_analyzer.StringIterator import StringIterator
 
 
