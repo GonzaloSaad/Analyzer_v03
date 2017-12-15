@@ -44,7 +44,7 @@ class Lexer():
             if token is None:  # Si el token no se encontro, se lanza una excepcion no reconociendo el simbolo.
                 raise NoSuchSymbolException("The symbol '" + c + "' is not legal.")
 
-            # yield token --Aqui se devuelve el token, en la version original.
+            yield token #--Aqui se devuelve el token, en la version original.
 
     def __scan(self, lexemes, size, chars):
         '''
@@ -86,7 +86,7 @@ class Lexer():
             found = False
             c = chars.getChar(step)  # Se obtiene 'size' caracteres adelante.
             while c is not None:  # Se itera hasta que el caracter sea nulo.
-                if not re.match(lex.getPat(), c):  # Si no se produce un match, se frena.
+                if not re.fullmatch(lex.getPat(), c):  # Si no se produce un match, se frena.
                     break
                 found = True
                 step += 1  # Se incrementa el paso, para ver si la coincidencia continua.

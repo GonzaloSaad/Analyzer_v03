@@ -41,7 +41,7 @@ class FunctionLexer():
         :raise NoSuchSymbolException: si algun caracter del string no condice con los lexemas.
         '''
 
-        self.__lexer.tokenize()  # Delega el metodo al objeto de la clase Lexer.
+        return self.__lexer.tokenize()  # Delega el metodo al objeto de la clase Lexer.
 
     def __defineVariablesLexemes(self, first, vars):
         '''
@@ -71,10 +71,14 @@ class FunctionLexer():
             Lexeme('OP', r'\^'),
             Lexeme('LPAREN', r'\('),
             Lexeme('RPAREN', r'\)'),
-            Lexeme('COEFF', r'[A-Z]'),
+
             Lexeme('CONSTANT', r'e')
 
         ]  # Se crean los lexemas.
+
+
+        #Saco este lexema para probar coeficientes con numeros; Lexeme('COEFF', r'[A-Z]'),
+
         self.__lexer.addLexemes(lexemes)  # Se los agrega.
 
     def __setDualLexemes(self):
@@ -104,7 +108,8 @@ class FunctionLexer():
     def __setMultipleLexemes(self):
         lexemes = [
             Lexeme('NUMBER', r'[0-9]+(?!.)'),
-            Lexeme('NUMBER',r'\.[0-9]*(?!.)')
+            Lexeme('NUMBER',r'\.[0-9]*(?!.)'),
+            Lexeme('COEFF',r'[A-Z][0-9]*')
         ]  # Se crean los lexemas.
         self.__lexer.addLexemes(lexemes)  # Se los agrega.
 
@@ -114,3 +119,13 @@ class FunctionLexer():
         :return: un string representantivo de la clase.
         '''
         return self.__lexer.__str__()
+
+
+ex = 'A123*sin(cos(x))+B*log(x-(x+2))+C*e^(x+2))'
+
+lexer = FunctionLexer(ex)
+
+for tok in lexer.tokenize():
+    print(tok)
+
+

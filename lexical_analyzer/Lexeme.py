@@ -27,7 +27,7 @@ class Lexeme():
 
     def size(self):
 
-        if re.match(r'\[.-.\](?![\+\*])', self.pat):
+        if re.match(r'\[.-.\](?![\+\*\[])', self.pat):
             return 1
 
         tam = 0
